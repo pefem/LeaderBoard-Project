@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LeaderBoardDBModelStoreContainer" CdmEntityContainer="LeaderBoardDBEntities">
+    <EntitySetMapping Name="Boards">
+      <EntityTypeMapping TypeName="LeaderBoardDBModel.Board">
+        <MappingFragment StoreEntitySet="Board">
+          <ScalarProperty Name="BoardId" ColumnName="BoardId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="GamesPlayed" ColumnName="GamesPlayed" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="LeaderBoardDBModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NormalizedName" ColumnName="NormalizedName" />
+          <ScalarProperty Name="ConcurrencyStamp" ColumnName="ConcurrencyStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleClaims">
+      <EntityTypeMapping TypeName="LeaderBoardDBModel.RoleClaim">
+        <MappingFragment StoreEntitySet="RoleClaim">
+          <ScalarProperty Name="RoleClaimID" ColumnName="RoleClaimID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LeaderBoardDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="ConcurrencyStamp" ColumnName="ConcurrencyStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEnd" ColumnName="LockoutEnd" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="SocialAccount" ColumnName="SocialAccount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClaims">
+      <EntityTypeMapping TypeName="LeaderBoardDBModel.UserClaim">
+        <MappingFragment StoreEntitySet="UserClaim">
+          <ScalarProperty Name="UserClaimID" ColumnName="UserClaimID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="LeaderBoardDBModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="ProviderDisplayName" ColumnName="ProviderDisplayName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTokens">
+      <EntityTypeMapping TypeName="LeaderBoardDBModel.UserToken">
+        <MappingFragment StoreEntitySet="UserToken">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserRole" TypeName="LeaderBoardDBModel.UserRole" StoreEntitySet="UserRole">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserID" ColumnName="UserID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

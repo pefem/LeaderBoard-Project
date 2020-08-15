@@ -1,0 +1,62 @@
+<!-- SECURED -->
+<div>
+
+  <!-- CALLOUT PANEL -->
+  <!-- <widget-callout-panel *ngIf="globals.isAccountLoggedIn"></widget-callout-panel> -->
+
+  <div class="app-view" *ngIf="globals.isAccountLoggedIn">
+    <!-- HEADER SECTION -->
+    <header
+      class="app-header {{globals.isAccountLoggedIn? 'margin-left-100px margin-right-100px' : ''}} navbar-dark bg-white">
+      <div class="w-100 height-72px mx-auto pl-3 pr-3 d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-start w-50">
+          <div class="rounded-circle icon icon-25 {{globals.selectedModuleIcon}} min-width-25px">
+          </div>
+          <div class="">
+            <h4 class="m-0 font-weight-bold p-2">
+              {{globals.selectedModuleTitle}}
+            </h4>
+          </div>
+        </div>
+        <div class="nav-item w-100 justify-content-center text-center">
+
+        </div>
+        <div class="w-50">
+          <div class="searchbar-menu">
+            <div class="d-flex align-items-center float-right ml-auto">
+              <div class="nav-item dropdown account-menu-item ml-2">
+                <widget-auth-knob (onClickLogout)="logout()"></widget-auth-knob>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-divider m-0"></div>
+    </header>
+  </div>
+
+  <!-- LOADER SECTION -->
+  <section *ngIf="globals.isLoading">
+    <div class="container d-flex justify-content-center">
+      <div class="text-center w-25 p-3">
+        <widget-loader [isLoading]="globals.isLoading"></widget-loader>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE LOADER -->
+  <widget-page-loader size="120" color="white" [isLoading]="globals.isPageLoading">
+  </widget-page-loader>
+
+  <!-- DIALOGS -->
+  <widget-confirm-dialog></widget-confirm-dialog>
+  <widget-alert-dialog></widget-alert-dialog>
+
+  <!-- TOASTER -->
+  <widget-toast></widget-toast>
+</div>
+
+<!-- ROUTER -->
+<section class="app-router-section {{globals.isAccountLoggedIn? 'margin-left-150px margin-right-150px' : ''}}">
+  <router-outlet></router-outlet>
+</section>

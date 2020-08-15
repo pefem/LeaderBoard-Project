@@ -1,0 +1,213 @@
+.by-carousel,
+.by-carousel .by-item {
+  -webkit-tap-highlight-color: transparent;
+  position: relative
+}
+
+.by-carousel {
+  display: none;
+  width: 100%;
+  z-index: 1
+}
+
+.by-carousel .by-stage {
+  position: relative;
+  -ms-touch-action: pan-Y;
+  touch-action: manipulation;
+  -moz-backface-visibility: hidden
+}
+
+.by-carousel .by-stage:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0
+}
+
+.by-carousel .by-stage-outer {
+  position: relative;
+  overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0)
+}
+
+.by-carousel .by-item,
+.by-carousel .by-wrapper {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0)
+}
+
+.by-carousel .by-item {
+  min-height: 1px;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none
+}
+
+.by-carousel .by-item img {
+  display: block;
+  width: 100%
+}
+
+.by-carousel .by-dots.disabled,
+.by-carousel .by-nav.disabled {
+  display: none
+}
+
+.no-js .by-carousel,
+.by-carousel.by-loaded {
+  display: block
+}
+
+.by-carousel .by-dot,
+.by-carousel .by-nav .by-next,
+.by-carousel .by-nav .by-prev {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+.by-carousel .by-nav button.by-next,
+.by-carousel .by-nav button.by-prev,
+.by-carousel button.by-dot {
+  background: 0 0;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit
+}
+
+.by-carousel.by-loading {
+  opacity: 0;
+  display: block
+}
+
+.by-carousel.by-hidden {
+  opacity: 0
+}
+
+.by-carousel.by-refresh .by-item {
+  visibility: hidden
+}
+
+.by-carousel.by-drag .by-item {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+.by-carousel.by-grab {
+  cursor: move;
+  cursor: grab
+}
+
+.by-carousel.by-rtl {
+  direction: rtl
+}
+
+.by-carousel.by-rtl .by-item {
+  float: right
+}
+
+.by-carousel .animated {
+  animation-duration: 1s;
+  animation-fill-mode: both
+}
+
+.by-carousel .by-animated-in {
+  z-index: 0
+}
+
+.by-carousel .by-animated-out {
+  z-index: 1
+}
+
+.by-carousel .fadeOut {
+  animation-name: fadeOut
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0
+  }
+}
+
+.by-height {
+  transition: height .5s ease-in-out
+}
+
+.by-carousel .by-item .by-lazy {
+  opacity: 0;
+  transition: opacity .4s ease
+}
+
+.by-carousel .by-item .by-lazy:not([src]),
+.by-carousel .by-item .by-lazy[src^=""] {
+  max-height: 0
+}
+
+.by-carousel .by-item img.by-lazy {
+  transform-style: preserve-3d
+}
+
+.by-carousel .by-video-wrapper {
+  position: relative;
+  height: 100%;
+  background: #000
+}
+
+.by-carousel .by-video-play-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: url(by.video.play.png) no-repeat;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  transition: transform .1s ease
+}
+
+.by-carousel .by-video-play-icon:hover {
+  -ms-transform: scale(1.3, 1.3);
+  transform: scale(1.3, 1.3)
+}
+
+.by-carousel .by-video-playing .by-video-play-icon,
+.by-carousel .by-video-playing .by-video-tn {
+  display: none
+}
+
+.by-carousel .by-video-tn {
+  opacity: 0;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity .4s ease
+}
+
+.by-carousel .by-video-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%
+}

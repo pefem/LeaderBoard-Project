@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LeaderBoardDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Board">
+    <Key>
+      <PropertyRef Name="BoardId" />
+    </Key>
+    <Property Name="BoardId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Score" Type="int" Nullable="false" />
+    <Property Name="GamesPlayed" Type="int" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" />
+    <Property Name="NormalizedName" Type="nvarchar" MaxLength="256" />
+    <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="RoleClaim">
+    <Key>
+      <PropertyRef Name="RoleClaimID" />
+    </Key>
+    <Property Name="RoleClaimID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="RoleID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="EmailConfirmed" Type="bit" />
+    <Property Name="PasswordHash" Type="varbinary(max)" Nullable="false" />
+    <Property Name="PasswordSalt" Type="varbinary(max)" Nullable="false" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" />
+    <Property Name="TwoFactorEnabled" Type="bit" />
+    <Property Name="LockoutEnd" Type="datetimeoffset" Precision="7" />
+    <Property Name="LockoutEnabled" Type="bit" />
+    <Property Name="AccessFailedCount" Type="int" />
+    <Property Name="SocialAccount" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="UserClaimID" />
+    </Key>
+    <Property Name="UserClaimID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ProviderDisplayName" Type="nvarchar(max)" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="38" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="RoleID" Type="nvarchar" MaxLength="38" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserToken">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="38" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_RoleClaims_Roles_RoleID">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RoleClaim" Type="Self.RoleClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="RoleClaim">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserClaims_Users_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogins_Users_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Roles_RoleID">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Users_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTokens_Users_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserToken" Type="Self.UserToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserToken">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LeaderBoardDBModelStoreContainer">
+    <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleClaim" EntityType="Self.RoleClaim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserClaim" EntityType="Self.UserClaim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserToken" EntityType="Self.UserToken" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_RoleClaims_Roles_RoleID" Association="Self.FK_RoleClaims_Roles_RoleID">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleClaim" EntitySet="RoleClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserClaims_Users_UserID" Association="Self.FK_UserClaims_Users_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClaim" EntitySet="UserClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogins_Users_UserID" Association="Self.FK_UserLogins_Users_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Roles_RoleID" Association="Self.FK_UserRoles_Roles_RoleID">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Users_UserID" Association="Self.FK_UserRoles_Users_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTokens_Users_UserID" Association="Self.FK_UserTokens_Users_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserToken" EntitySet="UserToken" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,330 @@
+widget-callout-panel {
+  outline: none;
+}
+
+.widget-callout-panel {
+  z-index: 10000;
+}
+
+.widget-callout-panel .card {
+  position: fixed;
+  top: 0px !important;
+  left: 0 !important;
+  bottom: 0 !important;
+
+  z-index: 10010 !important;
+  border-radius: 0px !important;
+
+  border-top: none !important;
+  border-left: none !important;
+  border-bottom: none !important;
+  border-right: none !important;
+
+  box-shadow: 0px 0px 1px rgba(19, 19, 19, .5);
+
+  width: 0;
+  overflow: hidden;
+
+  /* -webkit-transition: width 200ms linear;
+  -moz-transition: width 200ms linear;
+  transition: width 200ms linear; */
+}
+
+.widget-callout-panel .collapse-callout-panel {
+  width: 0px;
+  will-change: transform;
+  contain: content;
+  /* animation: collapse 500ms step-start; */
+}
+
+.widget-callout-panel .expand-callout-panel {
+  transform-origin: left;
+  width: 250px;
+  will-change: transform;
+  contain: content;
+  /* animation: expand 500ms step-end; */
+
+  /* -webkit-transition: width 100ms ease-out;
+  -moz-transition: width 100ms ease-out;
+  transition: width 100ms ease-out; */
+}
+
+.widget-callout-panel .list-group-container {
+  overflow: hidden;
+  overflow-y: auto;
+  top: 25px;
+  bottom: 1px;
+  padding-top: 30px;
+}
+
+.widget-callout-panel .list-group-item {
+  position: relative;
+  text-align: right;
+  padding: 5px 20px !important;
+}
+
+.widget-callout-panel .list-group-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 3px;
+  background-color: #28a745;
+}
+
+.widget-callout-panel .list-group-item.active::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 3px;
+  background-color: #28a745;
+}
+
+
+/* animation */
+@keyframes expand {
+  0% {
+    transform: scaleX(0);
+  }
+
+  3.44828% {
+    transform: scaleX(0.13096);
+  }
+
+  6.89655% {
+    transform: scaleX(0.24861);
+  }
+
+  10.34483% {
+    transform: scaleX(0.3539);
+  }
+
+  13.7931% {
+    transform: scaleX(0.44771);
+  }
+
+  17.24138% {
+    transform: scaleX(0.53091);
+  }
+
+  20.68966% {
+    transform: scaleX(0.60434);
+  }
+
+  24.13793% {
+    transform: scaleX(0.66879);
+  }
+
+  27.58621% {
+    transform: scaleX(0.72503);
+  }
+
+  31.03448% {
+    transform: scaleX(0.77378);
+  }
+
+  34.48276% {
+    transform: scaleX(0.81574);
+  }
+
+  37.93103% {
+    transform: scaleX(0.85158);
+  }
+
+  41.37931% {
+    transform: scaleX(0.88191);
+  }
+
+  44.82759% {
+    transform: scaleX(0.90734);
+  }
+
+  48.27586% {
+    transform: scaleX(0.92842);
+  }
+
+  51.72414% {
+    transform: scaleX(0.94568);
+  }
+
+  55.17241% {
+    transform: scaleX(0.95962);
+  }
+
+  58.62069% {
+    transform: scaleX(0.97068);
+  }
+
+  62.06897% {
+    transform: scaleX(0.9793);
+  }
+
+  65.51724% {
+    transform: scaleX(0.98586);
+  }
+
+  68.96552% {
+    transform: scaleX(0.99072);
+  }
+
+  72.41379% {
+    transform: scaleX(0.99421);
+  }
+
+  75.86207% {
+    transform: scaleX(0.99661);
+  }
+
+  79.31034% {
+    transform: scaleX(0.99817);
+  }
+
+  82.75862% {
+    transform: scaleX(0.99912);
+  }
+
+  86.2069% {
+    transform: scaleX(0.99964);
+  }
+
+  89.65517% {
+    transform: scaleX(0.99989);
+  }
+
+  93.10345% {
+    transform: scaleX(0.99998);
+  }
+
+  96.55172% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes collapse {
+
+  100% {
+    transform: scaleX(1);
+  }
+
+  96.55172% {
+    transform: scaleX(1);
+  }
+
+  93.10345% {
+    transform: scaleX(0.99998);
+  }
+
+  89.65517% {
+    transform: scaleX(0.99989);
+  }
+
+  86.2069% {
+    transform: scaleX(0.99964);
+  }
+
+  82.75862% {
+    transform: scaleX(0.99912);
+  }
+
+  79.31034% {
+    transform: scaleX(0.99817);
+  }
+
+  75.86207% {
+    transform: scaleX(0.99661);
+  }
+
+  72.41379% {
+    transform: scaleX(0.99421);
+  }
+
+  68.96552% {
+    transform: scaleX(0.99072);
+  }
+
+  65.51724% {
+    transform: scaleX(0.98586);
+  }
+
+  62.06897% {
+    transform: scaleX(0.9793);
+  }
+
+  58.62069% {
+    transform: scaleX(0.97068);
+  }
+
+  55.17241% {
+    transform: scaleX(0.95962);
+  }
+
+  51.72414% {
+    transform: scaleX(0.94568);
+  }
+
+  48.27586% {
+    transform: scaleX(0.92842);
+  }
+
+  44.82759% {
+    transform: scaleX(0.90734);
+  }
+
+  41.37931% {
+    transform: scaleX(0.88191);
+  }
+
+  37.93103% {
+    transform: scaleX(0.85158);
+  }
+
+  34.48276% {
+    transform: scaleX(0.81574);
+  }
+
+  31.03448% {
+    transform: scaleX(0.77378);
+  }
+
+  27.58621% {
+    transform: scaleX(0.72503);
+  }
+
+  24.13793% {
+    transform: scaleX(0.66879);
+  }
+
+  20.68966% {
+    transform: scaleX(0.60434);
+  }
+
+  17.24138% {
+    transform: scaleX(0.53091);
+  }
+
+  13.7931% {
+    transform: scaleX(0.44771);
+  }
+
+  10.34483% {
+    transform: scaleX(0.3539);
+  }
+
+  6.89655% {
+    transform: scaleX(0.24861);
+  }
+
+  3.44828% {
+    transform: scaleX(0.13096);
+  }
+  0% {
+    transform: scaleX(0);
+  }
+}

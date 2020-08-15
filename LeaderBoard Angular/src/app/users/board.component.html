@@ -1,0 +1,48 @@
+<div tabindex="-1" id="createoredit-customer-modal">
+  <div class="max-width-450px" role="document">
+    <div class="modal-content border-0">
+      <div class="modal-header">
+        <div class="w-100 d-flex">
+          <div class="w-50">
+            <h5 class="modal-title font-weight-bold">Leader Board</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body min-height-170px">
+        <div class="tab-content- p-2 max-width-490px mx-auto" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="mx-auto">
+              <div class="w-100">
+                <div class="d-flex  mb-3">
+                  <div class="w-100 mr-3">
+                    <div class="mr-2 mb-1 text-left">Score</div>
+                    <div class="text-truncate line-height-16px shadow">
+                      <input type="text" class="w-100 form-control input-sm m-0 p-2" [(ngModel)]="data.Score"
+                        value="{{data?.Score}}" />
+                    </div>
+                  </div>
+                  <div class="w-100 mr-0">
+                    <div class="mr-2 mb-1 text-left">Games Played</div>
+                    <div class="text-truncate line-height-16px shadow">
+                      <input type="text" class="w-100 form-control input-sm m-0 p-2" [(ngModel)]="data.GamesPlayed"
+                        value="{{data?.GamesPlayed}}" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary w-25" [routerLink]="['/users']">Cancel</button>
+        <button type="button" class="btn btn-primary w-75" (click)="saveChanges($event)">
+          <div>Save changes</div>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</div>

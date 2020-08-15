@@ -1,0 +1,65 @@
+<div widget-pagination class="widget-pagination mb-2">
+
+  <div class="pagination justify-content-center font-weight-bold text-black-90">
+    <div class="d-flex" *ngIf="(totalPages <= maxPages)">
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _pages;" (click)="onClickPage(item)">
+        <a class="page-link">{{item}}</a>
+      </div>
+    </div>
+
+    <div class="d-flex" *ngIf="(pagesAfter <= 3)">
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _firstPagesAfter;" (click)="onClickPage(item)">
+        <a class="page-link">{{item}}</a>
+      </div>
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _pageSubset1After;" (click)="onClickPage(item)">
+        <a class="page-link">{{(item == currentPage + 3)? item : "..."}}</a>
+      </div>
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _lastPagesAfter;" (click)="onClickPage(item)">
+        <a class="page-link">{{item}}</a>
+      </div>
+    </div>
+
+    <div class="d-flex" *ngIf="(pagesBefore <= 3)">
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _firstPagesBefore;" (click)="onClickPage(item)">
+        <a class="page-link">{{item}}</a>
+      </div>
+      <div class="page-item cursor-pointer" *ngFor="let item of _pageSubsetBefore;" (click)="onClickPage(item)">
+        <a class="page-link">...</a>
+      </div>
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _lastPagesBefore;" (click)="onClickPage(item)">
+        <a class="page-link">{{item}}</a>
+      </div>
+    </div>
+
+    <div class="d-flex" *ngIf="(pagesAfter > 3)">
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _firstPagesAfter;" (click)="onClickPage(item, $event)">
+        <a class="page-link">{{item}}</a>
+      </div>
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _pageEllipsisToggle1After;" (click)="onClickPage(item)">
+        <a class="page-link">{{(item == currentPage + 3)? item : "..."}}</a>
+      </div>
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _middlePagesAfter;" (click)="onClickPage(item)">
+        <a class="page-link">{{item}}</a>
+      </div>
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _pageEllipsisToggle2After;" (click)="onClickPage(item)">
+        <a class="page-link">{{(item == currentPage + 3)? item : "..."}}</a>
+      </div>
+      <div class="page-item cursor-pointer" [ngClass]="{'active text-white': currentPage === item}"
+        *ngFor="let item of _lastPagesAfter;" (click)="onClickPage(item)">
+        <a class="page-link">{{item}}</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,90 @@
+<div class="bg-white {{(isFilterSectionDockable)? 'dockable-top': ''}}">
+  <div class="mt-0 ml-0 mr-0 p-0">
+    <div class="ml-3 mr-3 p-0">
+      <div class="row mt-0 mb-0 pt-1 pb-1">
+        <div class="d-flex w-100">
+          <div class="min-width-250px">
+            <div class="m-0 d-flex justify-content-start">
+              <button type="button"
+                class="d-flex align-items-center justify-content-center btn btn-white rounded border-0 shadow-none mb-0 mr-2"
+                [routerLink]="['/users/add']">
+                <div class="icon icon-16 add-black-icon mr-1"></div>
+                <span>Create a new user</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider m-0"></div>
+</div>
+
+<section class="mt-0 ml-1 mr-1 pt-0 pl-1 pr-1">
+  <div class="ml-3 mr-3 pl-0 pr-0">
+    <div class="">
+      <section class="datagrid-section p-0">
+        <div>
+          <table class="w-100 table table-hover datagrid users-table font-size-14px">
+            <thead class="border-top-0">
+              <tr>
+                <th class="border-top-0 border-bottom-0">
+                  <div class="d-flex pt-2 pb-2">
+                    <div class="w-100 d-flex align-items-center">
+                      <div class="w-100">Name</div>
+                      <div class="height-22px d-flex align-items-center ml-1 mr-2">
+                        <div class="m-0">
+                          <div class="cursor-pointer icon sort-up-black-icon width-20px height-8px"></div>
+                          <div class="cursor-pointer icon sort-down-black-icon width-20px height-8px"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-25 d-flex align-items-center">
+                      <div class="w-100"></div>
+                      <div class="height-22px d-flex align-items-center ml-1 mr-2">
+                        <div class="m-0">
+                          <div class="cursor-pointer icon sort-up-black-icon width-20px height-8px"></div>
+                          <div class="cursor-pointer icon sort-down-black-icon width-20px height-8px"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngIf="((users != null) && (users?.length > 0))">
+              <tr class="cursor-pointer" id="datagrid-row-{{row.CustomerId}}" *ngFor="let row of users; index as i">
+                <td>
+                  <div class="d-flex justify-content-between">
+                    <div class="w-100 d-flex align-items-center position-relative">
+                      <div class="rounded-circle icon min-width-40px icon-40 line-height-40px text-white font-weight-bold
+                        bg-secondary mr-4 text-center">
+                        {{row.ProviderDescription?.split('').slice(0,1).toString().toUpperCase()}}
+                      </div>
+                      <div class="font-size-14px">
+                        <div class="font-weight-bold text-black-90">
+                          {{row.FirstName + " " + row.LastName}}</div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <button [routerLink]="['/users/edit', row.UserID]" class="d-flex align-items-center justify-content-center btn btn-link rounded border-0 shadow-none mb-0 mr-2">Edit</button>
+                      <button [routerLink]="['/users/board', row.UserID]" class="d-flex align-items-center justify-content-center btn btn-link rounded border-0 shadow-none mb-0 mr-2">Board</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="((users == null) && (users?.length <= 0))">
+              <td class="d-flex align-items-center height-400px" colspan="5">
+                <div class="text-center mx-auto">
+                  <div class="illust illust-150 file-searching-illust"></div>
+                  <div class="text-center mx-auto">No records found.</div>
+                </div>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
